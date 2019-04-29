@@ -1,4 +1,5 @@
 (ns slackbot-vici.core
+  (:require [slackbot_vici.message.model :as messages])
   (:gen-class)
   (:require [org.httpkit.server :as server]
             [compojure.core :refer :all]
@@ -14,8 +15,8 @@
   (route/not-found "404 NOT Found!"))
 
 (defn -main
-  "I don't do a whole lot ... yet."
   [& args]
+  (clojure.java.jdbc/execute! messages/db [messages/create-table-sql])
   (let [port (Integer/parseInt "8080")]
     (server/run-server #'app-routes {:port port})
     (println (str "Running webserber at http://127.0.0.1:" port "/"))))
