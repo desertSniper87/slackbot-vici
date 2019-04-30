@@ -10,7 +10,12 @@
 
                  ; Databases
                  [org.clojure/java.jdbc "0.7.9"]
-                 [org.postgresql/postgresql "42.2.5"]]
+                 [org.postgresql/postgresql "42.2.5"]
+
+                 [ring "1.7.1"]
+                 [ring/ring-json "0.4.0"]
+                 [org.julienxx/clj-slack "0.6.3"]]
   :main ^:skip-aot slackbot-vici.core
-  :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :min-lein-version "2.0.0"
+  :uberjar-name "slackbot-vici.jar"
+  :profiles {:dev {:main slackbot-vici.core/-dev-main}})
