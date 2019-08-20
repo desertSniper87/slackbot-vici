@@ -24,15 +24,15 @@
       (url-verification-event json-body)
       (= "event_callback" type)
       ; immediate http 2xx response needed
-      (response "we are processing!!!"))))
+      ;(response "we are processing!!!"))))
       ; concurency needed; will implement later
-      ; (let [conn {:api-url "https://slack.com/api" :token "xoxb-620052217220-622429530583-lfn5wz3iFwfbUbiw1YLyTRac"}
-      ;       inner-type (get-in json-body [:event :type])
-      ;       channel (get-in json-body [:event :channel])]
-      ;   (println inner-type channel)
-      ;   (response "we are processing...")))))
-        ; (println (clj-slack.chat/post-message conn channel "your task is processing"))))))
-        ; (chat/post-message conn (str channel) "your task is processing...")))))
+       (let [conn {:api-url "https://slack.com/api" :token "xoxb-609755695890-623945872567-DSwwwMzqpLiOXFWupJKxgFlU"}
+             inner-type (get-in json-body [:event :type])
+             channel (get-in json-body [:event :channel])]
+         (println inner-type channel)
+         ;(response "we are processing...")))))
+         ;(println (clj-slack.chat/post-message conn channel "your task is processing"))))))
+         (chat/post-message conn (str channel) "your task is processing...")))))
 
 
 (defroutes routes
